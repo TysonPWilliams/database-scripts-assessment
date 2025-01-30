@@ -30,7 +30,7 @@ create table books (
 create table customers (
     customer_id serial primary key,
     name varchar(100) not null,
-    email varchar(100) not null,
+    email varchar(100) unique not null check(email like '%@%'),
     phone varchar(12)
 );
 
@@ -56,7 +56,7 @@ create table reviews (
     id serial primary key,
     book_id integer not null,
     customer_id integer not null,
-    rating integer not null,
+    rating integer not null check (rating between 1 and 5),
     comment text,
     date varchar(50) not null,
     author_id integer not null,
@@ -183,6 +183,8 @@ insert into loans (customer_id, book_id, borrow_date, due_date) values
     (2, 19, '22/01/25', '25/02/25'),
     (4, 8, '15/01/25', '15/01/25')
 ;
+
+update books set stock_availability = 0 where book_id in (25, 9, 19, 8);
 
 insert into book_authors (book_id, author_id) values
     (1, 1),  -- J.K. Rowling wrote Harry Potter 1

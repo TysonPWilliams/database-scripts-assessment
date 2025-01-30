@@ -1,3 +1,5 @@
+with temp_reviews_info as (
+
 select
     r.id,
     b.title as book_name,
@@ -10,6 +12,11 @@ select
 from reviews r 
     join books b on r.book_id = b.book_id
     join customers c on r.customer_id = c.customer_id
-    join authors a on r.author_id = a.author_id;
+    join authors a on r.author_id = a.author_id
+)
+select 
+    * from temp_reviews_info;
+    
 
-
+    
+    
