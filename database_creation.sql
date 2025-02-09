@@ -11,7 +11,7 @@ drop table book_genres cascade;
 drop database tysons_library;
 create database tysons_library;
 
-\c tysons_library
+\c tysons_library;
 
 create table authors (
     author_id serial primary key,
@@ -181,18 +181,38 @@ insert into loans (customer_id, book_id, borrow_date, due_date) values
     (1, 25, '28/01/25', '28/02/25'),
     (3, 9, '25/01/25', '25/02/25'),
     (2, 19, '22/01/25', '25/02/25'),
-    (4, 8, '15/01/25', '15/01/25')
+    (4, 8, '15/01/25', '15/02/25')
 ;
 
-update books set stock_availability = 0 where book_id in (25, 9, 19, 8);
+update books set stock_available = 0 where book_id in (25, 9, 19, 8);
 
 insert into book_authors (book_id, author_id) values
-    (1, 1),  -- J.K. Rowling wrote Harry Potter 1
-    (2, 1),  -- J.K. Rowling wrote Harry Potter 2
-    (8, 2),  -- Shakespeare wrote A Midsummer Night’s Dream
-    (9, 2),  -- Shakespeare wrote The Taming of the Shrew
-    (16, 4), -- Tom Clancy wrote Rainbow Six
-    (17, 4); -- Tom Clancy wrote The Hunt for Red October
+    (1, 1),
+    (2, 1),
+    (3, 1),
+    (4, 1),
+    (5, 1),
+    (6, 1),
+    (7, 1),
+    (8, 2),
+    (9, 2),
+    (10, 2),
+    (11, 2),
+    (12, 3),
+    (13, 3),
+    (14, 3),
+    (15, 3), 
+    (16, 4),
+    (17, 4),
+    (18, 4),
+    (19, 5),
+    (20, 5),
+    (21, 5),
+    (22, 5),
+    (23, 6),
+    (24, 6),
+    (25, 6),
+    (26, 6); 
 
 insert into postcodes (postcode, state) values
     (2541, 'NSW'),
